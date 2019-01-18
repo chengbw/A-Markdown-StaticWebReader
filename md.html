@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>md</title>
+    <link rel="stylesheet" href="static/md.css">
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.js"></script>
+    <script src="https://cdn.bootcss.com/markdown-it/8.4.2/markdown-it.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+
+    <style>
+        .content-wrap {
+            max-width: 750px;
+            margin: 1em auto;
+        }
+
+        .content {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-wrap">
+        <div id="id-content" class="md"></div>
+    </div>
+
+    <script>
+        "use strict";
+
+        let md = window.markdownit({
+            highlight: function (str, lang) {
+                if (lang && hljs.getLanguage(lang)) {
+                    try {
+                        return '<pre class="hljs"><code>' +
+                            hljs.highlight(lang, str, true).value +
+                            '</code></pre>';
+                    } catch (__) { }
+                }
+
+                return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+            }
+        });
+
+        //get data
+        let url = 'data/demo.md';
+        axios.get(url)
+            .then(function (response) {
+                // console.log(response.data);
+                //display content
+                document.getElementById('id-content').innerHTML = parse_md(response.data);
+            }).catch(function (error) {
+                console.log(error);
+            });
+
+        function parse_md(text) {
+            let result = md.render(text);
+            return result;
+        }
+    </script>
+</body>
+
+</html>
