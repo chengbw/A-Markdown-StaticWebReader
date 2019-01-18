@@ -13,4 +13,4 @@ def hello():
 
 next page
 
-![image](/data/static/img.jpg)
+![](/md/static/2019-01-19-01-39-41.png)

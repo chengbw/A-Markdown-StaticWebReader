@@ -48,8 +48,9 @@
         });
 
         //get data
-        let url = 'data/demo.md';
-        axios.get(url)
+        let url = new URL(window.location.href);
+        let src = url.searchParams.get("src");
+        axios.get(src)
             .then(function (response) {
                 // console.log(response.data);
                 //display content
