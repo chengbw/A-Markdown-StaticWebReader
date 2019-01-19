@@ -111,9 +111,8 @@
                     content.appendChild(title);
 
                     //toc group
-                    let fields = ['#', 'Title', 'Created']
                     let toc = groups[g]['toc']
-                    let table = create_toc_table(fields,toc);
+                    let table = create_toc_table(toc);
                     content.appendChild(table);
                 }
 
@@ -139,9 +138,10 @@
             });
         }
 
-        function create_toc_table(fields, toc) {
+        function create_toc_table(toc) {
             let table = document.createElement('table');
             //add header
+            let fields = ['#', 'Title', 'Created']
             let header = document.createElement('thead');
             let tr = document.createElement('tr');
             for (let i = 0; i < fields.length; i++) {
