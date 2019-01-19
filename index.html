@@ -105,6 +105,12 @@
                 })
                 //create table
                 for (let g = 0; g < groups.length; g++) {
+                    //toc group title
+                    let title = document.createElement('h2');
+                    title.innerText = groups[g]['group']
+                    content.appendChild(title);
+
+                    //toc group
                     let fields = ['#', 'Title', 'Created']
                     let toc = groups[g]['toc']
                     let table = create_toc_table(fields,toc);
