@@ -103,45 +103,11 @@
                 let groups = groupBy(toc_total, function (e) {
                     return e['created_at'].substr(0, 7);
                 })
-
+                //create table
                 for (let g = 0; g < groups.length; g++) {
-                    //title
-                    let toc_title = document.createElement('h2');
-                    toc_title.innerText = groups[g]['group'];
-                    content.appendChild(toc_title);
-
-                    //table
-                    let table = document.createElement('table');
-
-                    //header
                     let fields = ['#', 'Title', 'Created']
-                    let header = table.createTHead();
-
-                    let tr = document.createElement('tr');
-                    for (let i = 0; i < fields.length; i++) {
-                        let td = document.createElement('th');
-                        td.innerText = fields[i];
-                        tr.appendChild(td);
-                    }
-                    header.appendChild(tr)
-
-                    //toc
                     let toc = groups[g]['toc']
-                    for (let i = 0; i < toc.length; i++) {
-                        let row = table.insertRow();
-                        let seq = row.insertCell();
-                        seq.innerText = i + 1;
-
-                        let title = row.insertCell();
-                        let a = document.createElement('a')
-                        a.innerText = toc[i]['title']
-                        a.href = '/md.html?src=' + toc[i]['url']
-                        title.appendChild(a);
-
-                        let created_at = row.insertCell();
-                        created_at.innerText = toc[i]['created_at'].substr(5)
-                    }
-
+                    let table = create_toc_table(fields,toc);
                     content.appendChild(table);
                 }
 
@@ -165,6 +131,43 @@
                     'toc': groups[group]
                 };
             });
+        }
+
+        function create_toc_table(fields, toc) {
+            let table = document.createElement('table');
+            //add header
+            let header = document.createElement('thead');
+            let tr = document.createElement('tr');
+            for (let i = 0; i < fields.length; i++) {
+                let td = document.createElement('th');
+                td.innerText = fields[i];
+                tr.appendChild(td);
+            }
+            header.appendChild(tr)
+            table.appendChild(header)
+            //add body
+            let body = document.createElement('tbody');
+            for (let i = 0; i < toc.length; i++) {
+                let tr = document.createElement('tr');
+                let seq = document.createElement('td');
+                seq.innerText = i + 1;
+                tr.appendChild(seq);
+
+                let title = document.createElement('td');
+                let a = document.createElement('a')
+                a.innerText = toc[i]['title']
+                a.href = '/md.html?src=' + toc[i]['url']
+                title.appendChild(a);
+                tr.appendChild(title);
+
+                let created_at = document.createElement('td');
+                created_at.innerText = toc[i]['created_at'].substr(5);
+                tr.appendChild(created_at);
+                body.appendChild(tr)
+            }
+            table.appendChild(body);
+
+            return table;
         }
 
         function stop_show_loader() {
