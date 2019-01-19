@@ -1,8 +1,8 @@
 .md > h1{
     color: #254781;
     font-size: 1.5em;
-    border-bottom-style:double;
     margin-top: 0px;
+    text-align: center;
 }
 
 .md > h2{
@@ -50,13 +50,13 @@
 }
 
 .md a {
-    color:#254781;
+    color:blue;
     text-decoration:none;
 }
 
 .md p{
     text-indent: 2em;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .md pre{
@@ -85,6 +85,7 @@
     margin-top: 0px;
     margin-bottom: 7px;
     padding-left: 1.5em;
+    margin-left: 2em;
 }
 
 .table-of-contents a{
