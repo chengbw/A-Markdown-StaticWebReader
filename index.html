@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<script src="/static/baidu.js"></script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,7 +81,7 @@
     <script>
         "use strict";
         let timestamp = (new Date()).getUTCMilliseconds();
-        let url = '/md/toc.json?timestamp='+timestamp; //为了每次都取到最新的数据，所以加上timestamp
+        let url = '/md/toc.json?timestamp=' + timestamp; //为了每次都取到最新的数据，所以加上timestamp
         axios.get(url)
             .then(function (response) {
                 // console.log(response.data);
@@ -165,8 +167,8 @@
             });
         }
 
-        function stop_show_loader(){
-            document.getElementById('id-loader').style.display="none";
+        function stop_show_loader() {
+            document.getElementById('id-loader').style.display = "none";
         }
 
     </script>
