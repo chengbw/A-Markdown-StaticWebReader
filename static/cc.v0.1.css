@@ -1,6 +1,9 @@
 .content-wrap {
     max-width: 750px;
-    margin: 1em auto;
+    margin-top: 1em;
+    margin-bottom: 4em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 a {
