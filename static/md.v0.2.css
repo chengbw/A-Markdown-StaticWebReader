@@ -66,6 +66,14 @@
     overflow-x:auto;
 }
 
+.md li > p{
+    text-indent: 0px;
+}
+
+.md li > pre{
+    margin: 5px 0px;
+}
+
 .md code{
     background: rgb(243, 242, 242);
 }
