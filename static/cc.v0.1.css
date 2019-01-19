@@ -25,11 +25,18 @@ a {
 }
 .menu-item{
     display: inline-block;
-    line-height: 3em;
-    margin:0 1em;
 }
 .menu-item a{
     color: white;
+    display: inline-block;
+    line-height: 3em;
+    padding:0 1em;
+    margin: 0 5px;
+}
+
+.menu-item a:hover,
+.hmenu-item a:focus {
+    background-color: rgb(0, 0, 255);
 }
 
 .loader {
