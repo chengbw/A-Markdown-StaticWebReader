@@ -25,6 +25,8 @@
         <div class="menu-item"><a href="/about.html">About</a></div>
     </div>
 
+    <div class="loader" id="id-loader"></div>
+
     <div class="content-wrap">
         <h1>===</h1>
         <pre id="id-content" class="content"></pre>
@@ -40,8 +42,10 @@
                 // console.log(response.data);
                 //display content
                 document.getElementById('id-content').innerText = get_random_content(response.data);
+                stop_show_loader();
             }).catch(function (error) {
                 console.log(error);
+                stop_show_loader();
             });
 
         //get a random content
@@ -53,6 +57,10 @@
                 content = content_list[index];
             }
             return content;
+        }
+
+        function stop_show_loader(){
+            document.getElementById('id-loader').style.display="none";
         }
 
     </script>

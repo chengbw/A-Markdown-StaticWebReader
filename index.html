@@ -67,6 +67,8 @@
         <div class="menu-item"><a href="/about.html">About</a></div>
     </div>
 
+    <div class="loader" id="id-loader"></div>
+
     <div class="content-wrap">
         <div id="id-content" class="toc">
 
@@ -141,8 +143,11 @@
                     content.appendChild(table);
                 }
 
+                stop_show_loader();
+
             }).catch(function (error) {
                 console.log(error);
+                stop_show_loader();
             });
 
         function groupBy(array, f) {
@@ -158,6 +163,10 @@
                     'toc': groups[group]
                 };
             });
+        }
+
+        function stop_show_loader(){
+            document.getElementById('id-loader').style.display="none";
         }
 
     </script>

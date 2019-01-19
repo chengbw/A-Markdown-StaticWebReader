@@ -22,6 +22,8 @@
         <div class="menu-item"><a href="/about.html">About</a></div>
     </div>
 
+    <div class="loader" id="id-loader"></div>
+
     <div class="content-wrap">
         <div id="id-content" class="md"></div>
     </div>
@@ -52,13 +54,19 @@
                 // console.log(response.data);
                 //display content
                 document.getElementById('id-content').innerHTML = parse_md(response.data);
+                stop_show_loader();
             }).catch(function (error) {
                 console.log(error);
+                stop_show_loader();
             });
 
         function parse_md(text) {
             let result = md.render(text);
             return result;
+        }
+
+        function stop_show_loader(){
+            document.getElementById('id-loader').style.display="none";
         }
     </script>
 </body>
