@@ -56,11 +56,19 @@
                 // console.log(response.data);
                 //display content
                 document.getElementById('id-content').innerHTML = parse_md(response.data);
+                set_title(response.data);
                 stop_show_loader();
             }).catch(function (error) {
                 console.log(error);
                 stop_show_loader();
             });
+
+        function set_title(text) {
+            let title = text.split('\n')[0].trim();
+            if (title.substr(0, 2) == '# ') {
+                document.title = title.replace('# ','') + ' - ChengBW';
+            }
+        }
 
         function parse_md(text) {
             let result = md.render(text);
