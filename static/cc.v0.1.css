@@ -23,6 +23,13 @@ a {
     background-color: #2674FB;
     color: white;
 }
+
+@media print{
+    .header{
+        display: none;
+    }
+}
+
 .menu-item{
     display: inline-block;
 }
