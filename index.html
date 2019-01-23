@@ -80,10 +80,14 @@
     <script src="https://cdn.bootcss.com/axios/0.18.0/axios.js"></script>
     <script>
         "use strict";
-        const TOC_URL='/md/toc.json';
         
         let timestamp = (new Date()).getUTCMilliseconds();
-        let url = TOC_URL+'?timestamp=' + timestamp; //为了每次都取到最新的数据，所以加上timestamp
+        let herf = new URL(window.location.href);
+        let base_url = herf.searchParams.get("toc")
+        if(base_url == null){
+            base_url = '/md/toc.json'; //default
+        }
+        let url = base_url + "?timestamp=" + timestamp; //为了每次都取到最新的数据，所以加上timestamp
         axios.get(url)
             .then(function (response) {
                 // console.log(response.data);
