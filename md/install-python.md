@@ -39,7 +39,7 @@ Anaconda python安装完成之后，在`cmd`中或者`powershell`中输入：`ju
 输入命令：
 ![](/md/static/2019-07-17-19-01-33.png)
 
-命令输入完成之后，会在浏览器中打开页面`http://localhost:8888/tree`：
+命令会自动在浏览器中打开页面`http://localhost:8888/tree`：
 ![](/md/static/2019-07-17-19-04-05.png)
 
 新建一个文件，会在新的页面打开：
