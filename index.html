@@ -85,7 +85,7 @@
         let herf = new URL(window.location.href);
         let base_url = herf.searchParams.get("toc")
         if(base_url == null){
-            base_url = '/md/toc.json'; //default
+            base_url = 'toc.json'; //default
         }
         let url = base_url + "?timestamp=" + timestamp; //为了每次都取到最新的数据，所以加上timestamp
         axios.get(url)
